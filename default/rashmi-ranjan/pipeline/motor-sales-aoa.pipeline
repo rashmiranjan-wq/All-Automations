@@ -1,0 +1,93 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "50f97aad-710a-54be-8370-81face360c9b",
+          "type": "execution_node",
+          "op": "local-file-catalog:44e4c2697820",
+          "app_data": {
+            "component_parameters": {
+              "notebook_path": {
+                "widget": "file",
+                "value": "default/rashmi-ranjan/notebooks/motor_sales_aoa.ipynb"
+              },
+              "notebook_image": "DBR 15.4 \u2014 SMALL (Spark Connect)",
+              "dedicated_cluster": false,
+              "cpu_request": {
+                "widget": "string",
+                "value": "500m"
+              },
+              "mem_request": {
+                "widget": "string",
+                "value": "2Gi"
+              },
+              "env_vars": {
+                "widget": "string",
+                "value": "{}"
+              }
+            },
+            "component_source": "{\"catalog_type\": \"local-file-catalog\", \"component_ref\": {\"base_dir\": \"/opt/conda/share/jupyter/components/airflow\", \"path\": \"run_notebook_operator.py\"}}",
+            "ui_data": {
+              "label": "RunNotebookOperator",
+              "image": "/user/rashmi-ranjan/static/elyra/airflow.svg",
+              "x_pos": 50,
+              "y_pos": 50
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 8,
+        "runtime_type": "APACHE_AIRFLOW",
+        "properties": {
+          "name": "motor-sales-aoa",
+          "runtime": "Apache Airflow",
+          "pipeline_defaults": {
+            "schedule_interval": "30 16 * * *",
+            "failure_alert_emails": "rashmi.ranjan@navi.com"
+          }
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}

@@ -1,0 +1,8 @@
+secrets/
+**/data/
+*.env
+.env.*
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+sync_from_neuron.py
