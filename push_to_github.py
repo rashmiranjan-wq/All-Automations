@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Push local main branch to github.com/rashmiranjan-wq/neuron-notebooks-rashmi."""
 import json
+import os
 import subprocess
 import sys
 import time
@@ -72,18 +73,14 @@ def git_push(token: str) -> None:
     remote = f"https://github.com/{OWNER}/{REPO}.git"
     subprocess.run(["git", "remote", "remove", "origin"], cwd=ROOT, check=False)
     subprocess.run(["git", "remote", "add", "origin", remote], cwd=ROOT, check=True)
-    header = f"AUTHORIZATION: bearer {token}"
+    # Ephemeral credential helper (token is not written to git config).
+    helper = f"!f() {{ echo username=x-access-token; echo password={token}; }}; f"
+    env = os.environ.copy()
+    env["GIT_TERMINAL_PROMPT"] = "0"
     subprocess.run(
-        [
-            "git",
-            "-c",
-            f"http.extraHeader={header}",
-            "push",
-            "-u",
-            "origin",
-            "main",
-        ],
+        ["git", "-c", f"credential.helper={helper}", "push", "-u", "origin", "main"],
         cwd=ROOT,
+        env=env,
         check=True,
     )
 
