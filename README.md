@@ -1,4 +1,4 @@
-# neuron-notebooks-rashmi
+# All-Automations
 
 Private backup of Neuron notebooks for `default/rashmi-ranjan` on
 [Neuron](https://neuron.dp.navi-tech.in).
@@ -27,12 +27,8 @@ python3 sync_from_neuron.py
 
 The Cursor GitHub MCP token cannot create new repositories. One-time setup:
 
-1. Create an empty **private** repo: [github.com/new?name=neuron-notebooks-rashmi](https://github.com/new?name=neuron-notebooks-rashmi&visibility=private)
-2. Push this folder:
+Remote: `https://github.com/rashmiranjan-wq/All-Automations`
 
 ```bash
-cd neuron-notebooks-rashmi
 python3 push_to_github.py
 ```
-
-Repo URL: `https://github.com/rashmiranjan-wq/neuron-notebooks-rashmi`

@@ -8,7 +8,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-REPO = "neuron-notebooks-rashmi"
+REPO = "All-Automations"
 OWNER = "rashmiranjan-wq"
 ROOT = Path(__file__).resolve().parent
 
@@ -94,11 +94,14 @@ def main() -> int:
         print("Repository not found; attempting create...")
         if not create_repo(token):
             print(
-                f"\nCreate the repo manually: https://github.com/new?name={REPO}&visibility=private\n"
-                "Then re-run: python3 push_to_github.py\n",
+                f"\nYour GitHub MCP token cannot create repos (403). Create an empty private repo:\n"
+                f"  https://github.com/new?name={REPO}&visibility=private\n"
+                "Do not add a README or .gitignore on GitHub. Then re-run:\n"
+                "  python3 push_to_github.py\n",
                 file=sys.stderr,
             )
             return 1
+    print("Pushing to GitHub...")
     git_push(token)
     print(f"https://github.com/{OWNER}/{REPO}")
     return 0
