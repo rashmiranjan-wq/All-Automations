@@ -15,10 +15,24 @@ Private backup of Neuron notebooks for `default/rashmi-ranjan` on
 2. Keep credentials in Neuron `secrets/` (not in git): Google service account JSON, Slack token, Trino env.
 3. Notebooks prepend `../lib` (or `/home/jovyan/work/default/rashmi-ranjan/lib`) for imports.
 
-## Sync
+## Sync from Neuron
 
-Re-download from Neuron with the bundled script (requires `~/.cursor/mcp.json` neuron env):
+Re-download from Neuron (requires `~/.cursor/mcp.json` neuron env):
 
 ```bash
 python3 sync_from_neuron.py
 ```
+
+## Publish to GitHub
+
+The Cursor GitHub MCP token cannot create new repositories. One-time setup:
+
+1. Create an empty **private** repo: [github.com/new?name=neuron-notebooks-rashmi](https://github.com/new?name=neuron-notebooks-rashmi&visibility=private)
+2. Push this folder:
+
+```bash
+cd neuron-notebooks-rashmi
+python3 push_to_github.py
+```
+
+Repo URL: `https://github.com/rashmiranjan-wq/neuron-notebooks-rashmi`
